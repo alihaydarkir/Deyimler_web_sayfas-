@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deyimler</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/iletisim">İletişim</a>
+            <a href="https://izu.edu.tr/" >İZÜ Web Sayfası</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h1>Deyim Listesi</h1>
+            <form action="/filtrele" method="POST">
+                <input type="text" name="anahtarKelime" placeholder="Deyim adı veya açıklaması ile ara" value="<%= anahtarKelime %>">
+                <button type="submit">Ara</button>
+            </form>
+            <% if (mesaj) { %>
+                <p><%= mesaj %></p>
+            <% } %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Deyim Adı</th>
+                        <th>Deyim Açıklaması</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% deyimler.forEach(deyim => { %>
+                        <tr>
+                            <td><%= deyim.deyim_adi %></td>
+                            <td><%= deyim.deyim_aciklama %></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>
